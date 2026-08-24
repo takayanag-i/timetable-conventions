@@ -12,6 +12,7 @@ N = lambda s: ud.normalize("NFC", s)
 NAME_QUALIFIERS = {"教員", "講座", "会議", "学級", "教室"}
 
 SKIP_DIRS = {
+    ".agents",
     ".git",
     ".gradle",
     ".idea",
