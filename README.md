@@ -8,7 +8,7 @@ timetable プロジェクトの共通規約の正本。親リポジトリ `takay
 
 | パス | 内容 |
 |---|---|
-| `CONVENTIONS.md` | 規約の条文。第1章から第5章、第1条から第27条 |
+| `CONVENTIONS.md` | 規約の条文。第1章から第5章、第1条から第26条 |
 | `doc-lint/lint.py` | Markdownの執筆規約を機械的に検査する |
 | `doc-lint/SKILL.md` | 検査の使い方と、見ているもの・見ていないもの |
 | `ci/check-pinned.sh` | 参照側が固定しているコミットが、この正本の `main` と一致するかを検査する |
