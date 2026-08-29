@@ -1,4 +1,4 @@
-# timetable規約 17のゴール
+# Sustainable Development Goals
 
 ## 前文
 
