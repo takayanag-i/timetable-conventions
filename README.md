@@ -8,7 +8,7 @@ timetable プロジェクトの共通規約の正本。親リポジトリ `takay
 
 | パス | 内容 |
 |---|---|
-| `CONVENTIONS.md` | 規約の条文。第1章から第5章、第1条から第26条 |
+| `SDGs.md` | 17のゴールと71のターゲット |
 | `doc-lint/lint.py` | Markdownの執筆規約を機械的に検査する |
 | `doc-lint/SKILL.md` | 検査の使い方と、見ているもの・見ていないもの |
 | `ci/check-pinned.sh` | 参照側が固定しているコミットが、この正本の `main` と一致するかを検査する |
@@ -24,7 +24,7 @@ git submodule add https://github.com/takayanag-i/timetable-conventions.git .agen
 参照側の `CLAUDE.md` は冒頭に次の1行を置く。Claude Code がこの記法で条文を読み込む。
 
 ```
-@.agents/conventions/CONVENTIONS.md
+@.agents/conventions/SDGs.md
 ```
 
 参照側のCIは、`actions/checkout` に `submodules: true` を渡したうえで次の2つを流す。
