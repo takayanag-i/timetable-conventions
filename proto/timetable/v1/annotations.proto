@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package timetable.v1;
+
+import "google/protobuf/descriptor.proto";
+
+option go_package = "github.com/takayanag-i/timetable-conventions/gen/timetable/v1;timetablev1";
+option java_package = "dev.timetable.proto.v1";
+option java_outer_classname = "AnnotationsProto";
+
+extend google.protobuf.MethodOptions {
+  string grpc_id = 50001;
+}
