@@ -2,6 +2,7 @@
 
 import os
 import re
+import subprocess
 import sys
 import unicodedata as ud
 from pathlib import Path
@@ -11,32 +12,18 @@ N = lambda s: ud.normalize("NFC", s)
 # 制約定義マスタの名称が持つ限定辞。注釈ではなく名前の一部
 NAME_QUALIFIERS = {"教員", "講座", "会議", "学級", "教室"}
 
-SKIP_DIRS = {
-    ".agents",
-    ".git",
-    ".gradle",
-    ".idea",
-    ".next",
-    ".terraform",
-    ".venv",
-    "__pycache__",
-    "build",
-    "dist",
-    "node_modules",
-    "target",
-    "venv",
-}
-
 
 def markdown_files(root):
-    for dirpath, dirnames, filenames in os.walk(root):
-        here = Path(dirpath)
-        dirnames[:] = sorted(
-            d for d in dirnames if d not in SKIP_DIRS and not (here / d / ".git").exists()
-        )
-        for name in sorted(filenames):
-            if name.endswith(".md"):
-                yield here / name
+    """gitが追跡するMarkdownと、無視していないMarkdownを返す。"""
+    r = subprocess.run(
+        ["git", "-C", root, "ls-files", "-z", "--cached", "--others",
+         "--exclude-standard", "--", "*.md", ":!:.agents/**"],
+        capture_output=True,
+        text=True,
+    )
+    if r.returncode != 0:
+        sys.exit(f"doc-lint: {root} でgitが読めない\n  {r.stderr.strip()}")
+    return sorted(Path(root) / p for p in r.stdout.split("\0") if p)
 
 
 def parse(t):
