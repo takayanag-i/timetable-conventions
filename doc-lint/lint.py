@@ -57,8 +57,7 @@ def collect(root, docs_root):
         disp = N(str(p.relative_to(root)))
         text = p.read_text(encoding="utf-8")
         fm, body = parse(text)
-        design = docs_root is not None and p.is_relative_to(docs_root) and p.name != "CLAUDE.md"
-        if not design:
+        if docs_root is None or not p.is_relative_to(docs_root) or p.name == "CLAUDE.md":
             plain.append((disp, text))
             continue
         if fm is None:
